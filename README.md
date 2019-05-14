@@ -6,7 +6,7 @@
 
     PSQL (Local):
     npm install pg 
-    enter into psql then CREATE DATABASE [dbname]
+    enter into psql then CREATE DATABASE [dbname]; (dont forget the semicolon)
     OUTSIDE OF PSQL: psql [dbname] < [schema.sql location]
 ***
 
