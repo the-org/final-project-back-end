@@ -9,8 +9,8 @@ CREATE TABLE IF NOT EXISTS media (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     url VARCHAR(255), 
-    "desc" VARCHAR(1000),
-    created_at TimeStamp DEFAULT CURRENT_TIMESTAMP,
+    descr VARCHAR(1000),
+    created_at BIGINT,--TimeStamp DEFAULT CURRENT_TIMESTAMP,
     content TEXT,
     media_type VARCHAR(255)
   );
