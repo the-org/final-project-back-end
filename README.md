@@ -6,8 +6,8 @@
 
     PSQL (Local):
     npm install pg 
-    psql CREATE DATABASE [dbname]
-    psql [dbname] < [schema.sql location]
+    enter into psql then CREATE DATABASE [dbname]
+    OUTSIDE OF PSQL: psql [dbname] < [schema.sql location]
 ***
 
     PSQL(Heroku) - Requires localPSQL SETUP:
