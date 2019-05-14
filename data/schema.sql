@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS media ( 
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
+    title VARCHAR(255),
     url VARCHAR(255), 
     "desc" VARCHAR(1000),
     created_at TimeStamp DEFAULT CURRENT_TIMESTAMP,
