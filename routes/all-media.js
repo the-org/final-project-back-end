@@ -48,8 +48,8 @@ router.route('/')
 
 function insertDB(arr) {
   arr.forEach(el => {
-    const SQL = `INSERT INTO media (title, url, descr, created_at, content, media_type) VALUES ($1, $2, $3, $4, $5, $6)`;
-    const values = [el.title, el.url, el.descr, el.created_at, el.content, el.media_type];
+    const SQL = `INSERT INTO media (title, url, descr, content, media_type) VALUES ($1, $2, $3, $4, $5)`;
+    const values = [el.title, el.url, el.descr, el.content, el.media_type];
 
     return client.query(SQL, values)
       .then(result => {
@@ -65,7 +65,6 @@ function Media(title, url, descr, content, media_type) {
   this.descr = descr,
   this.content = content,
   this.media_type = media_type;
-  this.created_at = Date.now();
 }
 
 module.exports = router;

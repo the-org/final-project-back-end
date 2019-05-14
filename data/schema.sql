@@ -10,9 +10,9 @@ CREATE TABLE IF NOT EXISTS media (
     title VARCHAR(255),
     url VARCHAR(255), 
     descr VARCHAR(1000),
-    created_at BIGINT,--TimeStamp DEFAULT CURRENT_TIMESTAMP,
     content TEXT,
-    media_type VARCHAR(255)
+    media_type VARCHAR(255),
+    created_at TimeStamp DEFAULT CURRENT_TIMESTAMP
   );
 
 CREATE TABLE IF NOT EXISTS savedMedia (
