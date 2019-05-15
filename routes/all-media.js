@@ -24,7 +24,7 @@ client.connect(err => {
 });
 
 // express route
-router.route('/')
+router.route('/all-media')
   .get((req, res) => {
     // go get posts, create Media object, add to pending db insert array
     parser.parseURL(rssUrl)
