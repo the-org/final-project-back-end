@@ -1,6 +1,4 @@
-//route for /article
-
-'user strict';
+'use strict';
 
 const express = require('express');
 const { Client } = require('pg');
@@ -21,12 +19,12 @@ client.connect(err => {
 //route
 router.route('/article/:mediaId')
   .get((req, res) => {
-    //grab request parameter
+    // grab request parameter
     let id = req.params.mediaId;
     // let id = 1;
     let values = [id];
     let sql = 'SELECT content FROM media WHERE id = $1 ;';
-    console.log(id);
+
     client.query(sql, values)
       .then(result => {
         let queryRes = result.rows;
@@ -34,7 +32,6 @@ router.route('/article/:mediaId')
         res.send(queryRes);
       })
       .catch(err => console.log('error', err));
-
   });
 
 module.exports = router;
