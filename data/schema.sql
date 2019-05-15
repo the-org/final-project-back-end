@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS users, media, savedMedia;
 
 CREATE TABLE IF NOT EXISTS users ( 
     id SERIAL PRIMARY KEY, 
-    username VARCHAR(255) 
+    username VARCHAR(255) UNIQUE
   );
 
 CREATE TABLE IF NOT EXISTS media ( 
