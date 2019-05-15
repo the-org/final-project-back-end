@@ -36,8 +36,11 @@ router.route('/all-media')
         let dataArr = data.items.map(el => {
           return new Media(el.title, el.link, el.contentSnippet, el['content:encoded'], 'post');
         });
-        let result = insertDB(dataArr);
-        res.send(result);
+
+        Promise.all(insertDB(dataArr))
+          .then(resultFromDB => {
+            res.send(resultFromDB);
+          });
       })
       .catch(err => console.log('error', err));
 
@@ -49,15 +52,15 @@ router.route('/all-media')
   });
 
 function insertDB(arr) {
-  arr.forEach(el => {
+  return arr.map(el => {
     const SQL = `INSERT INTO media (title, url, descr, content, media_type) VALUES ($1, $2, $3, $4, $5) RETURNING *`;
     const values = [el.title, el.url, el.descr, el.content, el.media_type];
 
     return client.query(SQL, values)
       .then(result => {
-        console.log(result.rows);
-        return result.rows;
-      });
+        return result.rows[0];
+      })
+      .catch(err => console.log(err));
   });
 }
 
