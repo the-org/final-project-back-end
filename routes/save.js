@@ -30,14 +30,17 @@ router.route('/save/:userId/:mediaId')
     let media = req.params.mediaId;
 
     let values = [user, media];
-    let sql = 'INSERT INTO savedMedia (media_id, users_id)';
+    let sql = 'INSERT INTO savedMedia (users_id, media_id) VALUES ((SELECT id from users WHERE id=$1), (SELECT id from media WHERE id=$2))';
 
     client.query(sql, values)
       .then(result => {
-        let data = result.rows;
-        console.log('data', data);
+        console.log('result', result);
+        res.status(200).send('Media saved.');
       })
-      .catch(err => console.log('err', err));
+      .catch(err => {
+        console.log('err', err);
+        res.status(500).send('Error saving media.');
+      });
   });
 
 module.exports = router;
