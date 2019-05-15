@@ -1,6 +1,5 @@
-//route for /all-media
 'use strict';
-// const superagent = require('superagent');
+
 const express = require('express');
 const Parser = require('rss-parser');
 
