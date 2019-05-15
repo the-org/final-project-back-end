@@ -17,6 +17,6 @@ CREATE TABLE IF NOT EXISTS media (
 
 CREATE TABLE IF NOT EXISTS savedMedia (
     id SERIAL PRIMARY KEY,
-    media_ID INTEGER NOT NULL REFERENCES media(id),
+    media_id INTEGER NOT NULL REFERENCES media(id),
     users_id INTEGER NOT NULL REFERENCES users(id)
 );

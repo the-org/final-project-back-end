@@ -1,21 +1,24 @@
-//route for /all-media
 'use strict';
-// const superagent = require('superagent');
+
 const express = require('express');
 const Parser = require('rss-parser');
-
-const { Client } = require('pg');
-// const client = new pg.Client('https://data.heroku.com/datastores/2d50bc32-c651-4c74-bb96-aa0e5287150a');
-
 const router = express.Router();
+const { Client } = require('pg');
 
 let parser = new Parser();
 const rssUrl = 'https://hacks.mozilla.org/feed/';
 
-// connect to psql
-const dbUrl = 'postgres://localhost:5432/devhubdb';
+// db connection
+let databaseUrl;
+
+if (process.env.ENVIRONMENT === 'development') {
+  databaseUrl = process.env.DB_DEV_URL;
+} else if (process.env.ENVIRONMENT === 'production') {
+  databaseUrl = process.env.DB_PROD_URL;
+}
+
 const client = new Client({
-  connectionString: dbUrl,
+  connectionString: databaseUrl,
 });
 client.connect(err => {
   if (err) {
@@ -33,7 +36,6 @@ router.route('/all-media')
         let dataArr = data.items.map(el => {
           return new Media(el.title, el.link, el.contentSnippet, el['content:encoded'], 'post');
         });
-        console.log(dataArr);
         insertDB(dataArr);
         res.send(dataArr);
       })
