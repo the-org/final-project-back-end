@@ -24,19 +24,18 @@ client.connect(err => {
 router.route('/create-user/:username')
 //this should be a post?
   .post((req, res)=> {
-
     let username = req.params.username;
     let values = [username];
-    //fix this sql statement to get username
-    let sql = 'INSERT INTO users (username) VALUES ($1) ON CONFLICT DO NOTHING';
+    //This returns {"username": "CatDog","id": 30
+    let sql = 'INSERT INTO users (username) VALUES ($1) ON CONFLICT ON CONSTRAINT users_username_key DO UPDATE SET username=$1 RETURNING id';
     client.query(sql, values)
       .then(result => {
         console.log('result', result);
-        res.status(200).send('username found.');
+        res.status(200).send({username, id:result.rows[0].id});
       })
       .catch(err => {
         console.log('err', err);
-        res.status(500).send('no username');
+        res.status(500).send('');
       });
   });
 
