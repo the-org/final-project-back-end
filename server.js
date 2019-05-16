@@ -11,6 +11,7 @@ const article = require('./routes/article.js');
 const save = require('./routes/save.js');
 const createUser = require('./routes/create-user.js');
 const saved = require('./routes/saved.js');
+const deleteEntry = require('./routes/delete.js');
 
 
 const PORT = process.env.PORT || 3000;
@@ -23,6 +24,7 @@ app.use(article);
 app.use(save);
 app.use(createUser);
 app.use(saved);
+app.use(deleteEntry);
 
 
 app.get('/', (req, res) => {
