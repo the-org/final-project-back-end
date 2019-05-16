@@ -13,10 +13,14 @@ const createUser = require('./routes/create-user.js');
 const saved = require('./routes/saved.js');
 const deleteEntry = require('./routes/delete.js');
 
-
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+let corsOptions = {
+  origin: 'https://final-front-end.herokuapp.com',
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 // express middleware to handle routes
 app.use(allMedia);
