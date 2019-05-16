@@ -8,6 +8,19 @@ const { Client } = require('pg');
 let parser = new Parser();
 const rssUrl = 'https://hacks.mozilla.org/feed/';
 
+
+/*START TEST THE ADDITON OF CORS TO ROUTE*/
+const cors = require('cors');
+const app = express();
+let corsOptions = {
+  origin: 'https://final-front-end.herokuapp.com',
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+/*END TEST THE ADD*/
+
+
+
 // db connection
 let databaseUrl;
 

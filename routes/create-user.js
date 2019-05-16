@@ -4,19 +4,6 @@ const express = require('express');
 const router = express.Router();
 const { Client } = require('pg');
 
-
-/*START TEST THE ADDITON OF CORS TO ROUTE*/
-const cors = require('cors');
-const app = express();
-let corsOptions = {
-  origin: 'https://final-front-end.herokuapp.com',
-  optionsSuccessStatus: 200
-};
-app.use(cors(corsOptions));
-/*END TEST THE ADD*/
-
-
-
 // db connection
 let databaseUrl;
 
