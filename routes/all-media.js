@@ -16,7 +16,7 @@ let corsOptions = {
   origin: 'https://final-front-end.herokuapp.com',
   optionsSuccessStatus: 200
 };
-app.use(cors(corsOptions));
+app.use(cors());
 /*END TEST THE ADD*/
 
 
