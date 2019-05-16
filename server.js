@@ -15,12 +15,16 @@ const deleteEntry = require('./routes/delete.js');
 
 const PORT = process.env.PORT || 3000;
 
-let corsOptions = {
-  origin: 'https://final-front-end.herokuapp.com',
-  optionsSuccessStatus: 200
-};
+//use upon completion of development
+// let corsOptions = {
+//   origin: 'https://final-front-end.herokuapp.com',
+//   optionsSuccessStatus: 200
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+
+
+app.use(cors());
 
 // express middleware to handle routes
 app.use(allMedia);
