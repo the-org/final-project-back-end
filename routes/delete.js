@@ -11,7 +11,7 @@ let databaseUrl;
 if (process.env.ENVIRONMENT === 'development') {
   databaseUrl = process.env.DB_DEV_URL;
 } else if (process.env.ENVIRONMENT === 'production') {
-  databaseUrl = process.env.DB_PROD_URL;
+  databaseUrl = process.env.DATABASE_URL;
 }
 
 const client = new Client({
